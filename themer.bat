@@ -20,6 +20,7 @@ echo.
 echo     Input:
 set theme=spicetify-default
 set /p theme=^ ^ ^>^> 
+if %theme%==install goto install
 if %theme%==exit goto end
 if %theme%==help goto help
 if %theme%==themes goto github
@@ -62,6 +63,15 @@ echo.
 echo                                    .bat developed by
 echo                                    github.com/digitallic
 pause>nul
+goto theme
+
+:install
+powershell -command "Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/khanhas/spicetify-cli/master/install.ps1" | Invoke-Expression"
+echo.
+echo.
+echo   Done.
+pause>nul
+cls
 goto theme
 
 :backup
